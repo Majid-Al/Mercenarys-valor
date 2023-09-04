@@ -176,4 +176,4 @@ MonoBehaviour:
   health: 50
   attack: 30
   attackRange: 0.1
-  battleSceneManager: {fileID: 0}
+  battleSceneManager: {fileID: 183644795624920555, guid: 1b0f4c001a540a64094b1c3071e9b32e, type: 3}
