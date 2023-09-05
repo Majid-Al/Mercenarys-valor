@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] GameObject target;
+    GameObject target;
+
     HeroBullet heroBullet;
     // these are set un the unity surface
     [SerializeField] float speed = 1;
@@ -20,12 +21,14 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-
+        target = GameObject.Find("Base");
     }
     void Update()
     {
-        if (isActive)
+        if (isActive && target != null)
+        {
             transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
+        }
     }
 
 
@@ -62,6 +65,11 @@ public class Enemy : MonoBehaviour
         gameObject.SetActive(false);
         transform.position = new Vector3(-5, 0, 0);
         isActive = false;
+
+        // foreach (var item in battleSceneManager.p_activeEnemies)
+        // {
+        //     Debug.Log("1");
+        // }
 
     }
 }

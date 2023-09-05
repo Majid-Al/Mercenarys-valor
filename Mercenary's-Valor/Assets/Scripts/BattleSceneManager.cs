@@ -9,6 +9,8 @@ public class BattleSceneManager : MonoBehaviour
     public float p_cannonDamage = 5;
 
     public bool p_attackNearestEnemy = false;
+    public bool p_liveEnemies = false;
+    public List<GameObject> p_activeEnemies = new List<GameObject>();
 
 
 

@@ -16,6 +16,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
+    public int p_waveCount;
+    public int p_enemyNumber;
+
+
     void Start()
     {
 

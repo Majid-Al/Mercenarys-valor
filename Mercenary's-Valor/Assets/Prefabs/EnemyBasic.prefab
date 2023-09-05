@@ -172,6 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 6772179306060591057, guid: b9bacd26ef2ae13478a3e8b4e3801760, type: 3}
+  mainBase: {fileID: 6772179306060591057, guid: b9bacd26ef2ae13478a3e8b4e3801760, type: 3}
   speed: 1
   health: 100
   attack: 50

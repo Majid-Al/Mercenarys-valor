@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    [SerializeField] BattleSceneManager battleSceneManagerScript;
     [SerializeField] GameObject enemyBasic;
     [SerializeField] GameObject enemyRange;
     [SerializeField] GameObject enemyFast;
     [SerializeField] GameObject enemyTank;
     [SerializeField] GameObject enemySuper;
-    [SerializeField] int enemyNumbers;
+    int enemyNumbers;
+    int waveCount;
     List<int> enemyCount = new List<int>();
     List<GameObject> summoningEnemys = new List<GameObject>();
 
@@ -19,12 +21,12 @@ public class Spawner : MonoBehaviour
     List<GameObject> fastEnemyPool = new List<GameObject>();
     List<GameObject> tankEnemyPool = new List<GameObject>();
 
-
-    bool hasSpawnedEnemies = false;
+    bool liveEnemies;
 
     void Start()
     {
-        EnemyCounter(enemyNumbers);
+        enemyNumbers = GameManager.Instance.p_enemyNumber;
+        waveCount = GameManager.Instance.p_waveCount;
 
         // Initialize the Enemys pool
         CreatePool(enemyBasic, basicEnemyPool, 5);
@@ -32,14 +34,17 @@ public class Spawner : MonoBehaviour
         CreatePool(enemyFast, fastEnemyPool, 5);
         CreatePool(enemyTank, tankEnemyPool, 5);
 
-
-        GetInactiveEnemy();
-        if (!hasSpawnedEnemies)
+    }
+    void Update()
+    {
+        liveEnemies = battleSceneManagerScript.p_liveEnemies;
+        if (!liveEnemies && waveCount != 0)
         {
+            EnemyCounter(enemyNumbers);
             GetInactiveEnemy();
-            hasSpawnedEnemies = true;
+            liveEnemies = true;
+            waveCount -= 1;
         }
-
     }
 
     void CreatePool(GameObject enemy, List<GameObject> thePool, int enemyNumbers)
@@ -86,6 +91,7 @@ public class Spawner : MonoBehaviour
             {
                 enemyToSpawn.transform.position = GetSpawnPosition();
                 enemyToSpawn.SetActive(true);
+                battleSceneManagerScript.p_activeEnemies = summoningEnemys;
             }
 
         }
