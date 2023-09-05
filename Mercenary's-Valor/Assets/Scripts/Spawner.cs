@@ -92,6 +92,10 @@ public class Spawner : MonoBehaviour
                 enemyToSpawn.transform.position = GetSpawnPosition();
                 enemyToSpawn.SetActive(true);
                 battleSceneManagerScript.p_activeEnemies = summoningEnemys;
+                foreach (var item in battleSceneManagerScript.p_activeEnemies)
+                {
+                    Debug.Log("1");
+                }
             }
 
         }

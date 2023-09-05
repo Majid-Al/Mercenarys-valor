@@ -66,11 +66,6 @@ public class Enemy : MonoBehaviour
         transform.position = new Vector3(-5, 0, 0);
         isActive = false;
 
-        // foreach (var item in battleSceneManager.p_activeEnemies)
-        // {
-        //     Debug.Log("1");
-        // }
-
     }
 }
 
