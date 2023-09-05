@@ -127,6 +127,10 @@ public class Attacking : MonoBehaviour
     {
         Gizmos.DrawWireSphere(transform.position, heroRange);
         Gizmos.color = Color.red;
+
     }
+
+
+
 
 }
