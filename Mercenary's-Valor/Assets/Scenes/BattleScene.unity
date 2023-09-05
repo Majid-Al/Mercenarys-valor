@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &219640908 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3154422422187071132, guid: daccd756ab9120b47ab5bd19fbfebef3, type: 3}
+  m_PrefabInstance: {fileID: 1484927420}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &243592546
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,6 +532,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6298719231352523204, guid: 1b0f4c001a540a64094b1c3071e9b32e, type: 3}
   m_PrefabInstance: {fileID: 4607286716846926463}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &604562656 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 183644795624920555, guid: 1b0f4c001a540a64094b1c3071e9b32e, type: 3}
+  m_PrefabInstance: {fileID: 4607286716846926463}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 604562654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f42253d9732fc044ca2ea39619481bcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,6 +636,7 @@ GameObject:
   - component: {fileID: 731857959}
   - component: {fileID: 731857961}
   - component: {fileID: 731857960}
+  - component: {fileID: 731857963}
   m_Layer: 0
   m_Name: Tilemap
   m_TagString: Untagged
@@ -14559,6 +14576,86 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!60 &731857963
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731857958}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.43, y: -15.78}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 21.525494, y: 16.712177}
+      - {x: 21.48943, y: 14.651431}
+      - {x: 18.499228, y: 14.653539}
+      - {x: 18.440645, y: 12.72443}
+      - {x: 15.513047, y: 12.76911}
+      - {x: 15.476199, y: 10.699888}
+      - {x: 12.479539, y: 10.724953}
+      - {x: 12.450458, y: 9.7164345}
+      - {x: 10.515513, y: 9.690561}
+      - {x: 10.476493, y: 5.842266}
+      - {x: -2.6010823, y: 5.7796946}
+      - {x: -2.633876, y: 9.651878}
+      - {x: -4.6302896, y: 9.71376}
+      - {x: -4.678424, y: 10.691924}
+      - {x: -7.6246886, y: 10.7251835}
+      - {x: -7.5667796, y: 12.663605}
+      - {x: -10.561704, y: 12.686006}
+      - {x: -10.559269, y: 14.692283}
+      - {x: -13.617356, y: 14.69569}
+      - {x: -13.592187, y: 16.754238}
+      - {x: -16.642935, y: 16.742363}
+      - {x: -16.839895, y: 16.966805}
+      - {x: -18.74725, y: 16.73571}
+      - {x: -15.897793, y: 7.3434944}
+      - {x: -7.315787, y: 6.054467}
+      - {x: 5.2078195, y: 2.6389818}
+      - {x: 17.342886, y: 7.0037546}
+      - {x: 27.459253, y: 15.231094}
+      - {x: 26.973185, y: 15.526691}
+      - {x: 24.723572, y: 35.04576}
+      - {x: -24.066372, y: 32.751793}
+      - {x: -16.625906, y: 16.890984}
+      - {x: -16.643353, y: 31.824566}
+      - {x: 23.445408, y: 31.749569}
+      - {x: 23.481041, y: 16.770084}
+  m_UseDelaunayMesh: 0
 --- !u!1 &871972185
 GameObject:
   m_ObjectHideFlags: 0
@@ -15216,16 +15313,35 @@ PrefabInstance:
       propertyPath: battleSceneManager
       value: 
       objectReference: {fileID: 604562654}
+    - target: {fileID: 7339880944619671341, guid: daccd756ab9120b47ab5bd19fbfebef3, type: 3}
+      propertyPath: battleSceneManagerScript
+      value: 
+      objectReference: {fileID: 604562656}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3154422422187071132, guid: daccd756ab9120b47ab5bd19fbfebef3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1484927429}
   m_SourcePrefab: {fileID: 100100000, guid: daccd756ab9120b47ab5bd19fbfebef3, type: 3}
 --- !u!4 &1484927421 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3154422422187071134, guid: daccd756ab9120b47ab5bd19fbfebef3, type: 3}
   m_PrefabInstance: {fileID: 1484927420}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1484927429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 219640908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b86149588fb08d4aa9a84ba287b0909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1509720528
 GameObject:
   m_ObjectHideFlags: 0

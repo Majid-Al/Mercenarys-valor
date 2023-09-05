@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     // these are set un the unity surface
     [SerializeField] float speed = 1;
     [SerializeField] float health;
-    [SerializeField] float attack;
+    [SerializeField] public float attack;
     [SerializeField] float attackRange;
     float damageRecived;
     bool isActive = true;
@@ -20,14 +20,12 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        battleSceneManager = GameObject.Find("BattleSceneManager").GetComponent<BattleSceneManager>();
+
     }
     void Update()
     {
         if (isActive)
             transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
-        if (health < 0)
-            Gone();
     }
 
 
@@ -43,11 +41,15 @@ public class Enemy : MonoBehaviour
             damageRecived = theScript.attackDamage;
             GetDamage();
             theScript.GetDestroy();
+            if (health < 0)
+                Gone();
         }
         if (other.gameObject.tag == "CBullet")
         {
             damageRecived = battleSceneManager.p_cannonDamage;
             GetDamage();
+            if (health < 0)
+                Gone();
         }
     }
 

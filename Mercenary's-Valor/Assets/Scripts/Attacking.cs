@@ -18,12 +18,11 @@ public class Attacking : MonoBehaviour
     public bool p_beginShooting = false;
 
     [SerializeField] GameObject battleSceneManager;
-    BattleSceneManager battleSceneManagerScript;
+    [SerializeField] BattleSceneManager battleSceneManagerScript;
     // Start is called before the first frame update
     void Start()
     {
         InvokeRepeating("GetTarget", 0f, 0.5f);
-        battleSceneManagerScript = battleSceneManager.GetComponent<BattleSceneManager>();
     }
 
     // Update is called once per frame
@@ -110,7 +109,6 @@ public class Attacking : MonoBehaviour
     #endregion
 
     //  start shooting 
-
     private IEnumerator Shoot()
     {
         if (setTarget)

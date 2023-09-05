@@ -125,12 +125,13 @@ GameObject:
   m_Component:
   - component: {fileID: 3154422422187071134}
   - component: {fileID: 3154422422187071123}
+  - component: {fileID: 7339880944619671338}
+  - component: {fileID: 7339880944619671341}
+  - component: {fileID: 1604721259772239276}
   - component: {fileID: 3154422422187071135}
   - component: {fileID: 3154422422187071120}
   - component: {fileID: 3154422422187071121}
   - component: {fileID: 2724005500944295101}
-  - component: {fileID: 7339880944619671338}
-  - component: {fileID: 7339880944619671341}
   m_Layer: 20
   m_Name: Player
   m_TagString: Player
@@ -168,6 +169,55 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+--- !u!114 &7339880944619671338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3154422422187071132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7894ee7fb6552e048b861a12e573acec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  threshold: 0.1
+  sceneManager: {fileID: 0}
+--- !u!114 &7339880944619671341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3154422422187071132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eabbfafb8d728d41b45922275b9e047, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  haram: {fileID: 6772179306060591057, guid: b9bacd26ef2ae13478a3e8b4e3801760, type: 3}
+  heroRange: 5
+  shootPoint: {fileID: 2405949118988991723}
+  bullet: {fileID: 5236201608326452082, guid: 4caad55a674fac049997a4018636018c, type: 3}
+  fireRate: 2
+  p_beginShooting: 0
+  battleSceneManager: {fileID: 0}
+  battleSceneManagerScript: {fileID: 0}
+--- !u!114 &1604721259772239276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3154422422187071132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b86149588fb08d4aa9a84ba287b0909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  battleSceneManager: {fileID: 0}
+  health: 0
 --- !u!212 &3154422422187071135
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -313,37 +363,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7339880944619671338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3154422422187071132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7894ee7fb6552e048b861a12e573acec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  threshold: 0.1
-  sceneManager: {fileID: 0}
---- !u!114 &7339880944619671341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3154422422187071132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4eabbfafb8d728d41b45922275b9e047, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  haram: {fileID: 6772179306060591057, guid: b9bacd26ef2ae13478a3e8b4e3801760, type: 3}
-  heroRange: 5
-  shootPoint: {fileID: 2405949118988991723}
-  bullet: {fileID: 5236201608326452082, guid: 4caad55a674fac049997a4018636018c, type: 3}
-  fireRate: 2
-  p_beginShooting: 0
-  battleSceneManager: {fileID: 0}
