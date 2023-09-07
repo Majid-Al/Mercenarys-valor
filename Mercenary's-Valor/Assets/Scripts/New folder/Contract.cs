@@ -12,4 +12,5 @@ public class Contract : MonoBehaviour
         int randomIndex = Random.Range(0, cityChildren.Length);
         cityChildren[randomIndex].SetActive(true);
     }
+
 }
