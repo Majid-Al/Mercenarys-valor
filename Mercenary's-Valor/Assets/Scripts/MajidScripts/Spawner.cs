@@ -21,7 +21,10 @@ public class Spawner : MonoBehaviour
     List<GameObject> fastEnemyPool = new List<GameObject>();
     List<GameObject> tankEnemyPool = new List<GameObject>();
 
-    bool liveEnemies;
+    [SerializeField] private float delayTimeBetweenEnemies;
+    // private float enemySpawnDelay = 0.5f; // Delay between enemy spawns
+    // private float spawnTimer = 0.0f; // Timer to track the delay
+
 
     void Start()
     {
@@ -37,14 +40,14 @@ public class Spawner : MonoBehaviour
     }
     void Update()
     {
-        liveEnemies = battleSceneManagerScript.p_liveEnemies;
-        if (!liveEnemies && waveCount != 0)
+        if (!battleSceneManagerScript.p_liveEnemies && waveCount != 0)
         {
             EnemyCounter(enemyNumbers);
             GetInactiveEnemy();
-            liveEnemies = true;
+            battleSceneManagerScript.p_liveEnemies = true;
             waveCount -= 1;
         }
+
     }
 
     void CreatePool(GameObject enemy, List<GameObject> thePool, int enemyNumbers)
@@ -56,8 +59,6 @@ public class Spawner : MonoBehaviour
             thePool.Add(spawnedEnemy);
         }
     }
-
-
 
     void GetInactiveEnemy()
     {
@@ -87,30 +88,28 @@ public class Spawner : MonoBehaviour
                 enemylist[m] -= 1;
             }
 
+
             foreach (var enemyToSpawn in summoningEnemys)
             {
                 enemyToSpawn.transform.position = GetSpawnPosition();
                 enemyToSpawn.SetActive(true);
+                enemyToSpawn.GetComponent<Enemy>().p_enemyIsActive = true;
                 battleSceneManagerScript.p_activeEnemies = summoningEnemys;
-                foreach (var item in battleSceneManagerScript.p_activeEnemies)
-                {
-                    Debug.Log("1");
-                }
+
             }
 
         }
+
     }
-
-
 
     Vector3 GetSpawnPosition()
     {
         return new Vector3(Random.Range(-2.2f, 2.5f), 6, 0);
     }
 
-
     void EnemyCounter(int x)
     {
+        enemyCount.Clear();
         x -= 3;
         int randomNumber = Random.Range(1, x + 1);
         enemyCount.Add(randomNumber);
@@ -124,6 +123,5 @@ public class Spawner : MonoBehaviour
         enemyCount.Add(x);
 
     }
-
 
 }

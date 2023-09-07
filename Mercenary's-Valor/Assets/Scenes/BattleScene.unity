@@ -334,6 +334,7 @@ MonoBehaviour:
   enemyFast: {fileID: 5624510159435592714, guid: ba1f1351c350d734a8f7f4ae3d492680, type: 3}
   enemyTank: {fileID: 6617129298433470029, guid: be4adba6b104f6f4da17860cb2fb00b5, type: 3}
   enemySuper: {fileID: 8255061801454987020, guid: 6a0445fc424df5d45b27fd8ac43b2265, type: 3}
+  delayTimeBetweenEnemies: 5
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -14685,7 +14686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a12366e429041b44a5e826c6f3a7e6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  p_waveCount: 2
+  p_waveCount: 4
   p_enemyNumber: 5
 --- !u!1 &892324571 stripped
 GameObject:
@@ -15676,6 +15677,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1094959851}
     m_Modifications:
+    - target: {fileID: 183644795624920555, guid: 1b0f4c001a540a64094b1c3071e9b32e, type: 3}
+      propertyPath: delayTimeForWaves
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2060764562110678739, guid: 1b0f4c001a540a64094b1c3071e9b32e, type: 3}
       propertyPath: m_Name
       value: BattleSceneManager
