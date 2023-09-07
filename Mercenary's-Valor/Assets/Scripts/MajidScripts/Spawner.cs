@@ -12,6 +12,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] GameObject enemySuper;
     int enemyNumbers;
     int waveCount;
+
     List<int> enemyCount = new List<int>();
     List<GameObject> summoningEnemys = new List<GameObject>();
 
@@ -21,7 +22,10 @@ public class Spawner : MonoBehaviour
     List<GameObject> fastEnemyPool = new List<GameObject>();
     List<GameObject> tankEnemyPool = new List<GameObject>();
 
-    bool liveEnemies;
+    [SerializeField] private float delayTimeBetweenEnemies;
+
+    [SerializeField] private float enemySpawnDelay; // Delay between enemy spawns
+    [SerializeField] private float superCallingWait;
 
     void Start()
     {
@@ -37,14 +41,15 @@ public class Spawner : MonoBehaviour
     }
     void Update()
     {
-        liveEnemies = battleSceneManagerScript.p_liveEnemies;
-        if (!liveEnemies && waveCount != 0)
+        if (!battleSceneManagerScript.p_liveEnemies && waveCount != 0)
         {
+            CallTheSupper();
             EnemyCounter(enemyNumbers);
             GetInactiveEnemy();
-            liveEnemies = true;
+            battleSceneManagerScript.p_liveEnemies = true;
             waveCount -= 1;
         }
+
     }
 
     void CreatePool(GameObject enemy, List<GameObject> thePool, int enemyNumbers)
@@ -56,8 +61,6 @@ public class Spawner : MonoBehaviour
             thePool.Add(spawnedEnemy);
         }
     }
-
-
 
     void GetInactiveEnemy()
     {
@@ -87,15 +90,40 @@ public class Spawner : MonoBehaviour
                 enemylist[m] -= 1;
             }
 
-            foreach (var enemyToSpawn in summoningEnemys)
-            {
-                enemyToSpawn.transform.position = GetSpawnPosition();
-                enemyToSpawn.SetActive(true);
-                battleSceneManagerScript.p_activeEnemies = summoningEnemys;
-            }
+            StartCoroutine(SpawnEnemiesWithDelay());
+            // foreach (var enemyToSpawn in summoningEnemys)
+            // {
+            //     enemyToSpawn.transform.position = GetSpawnPosition();
+            //     enemyToSpawn.SetActive(true);
+            //     enemyToSpawn.GetComponent<Enemy>().p_enemyIsActive = true;
+            //     battleSceneManagerScript.p_activeEnemies = summoningEnemys;
+
+            // }
 
         }
+
     }
+    IEnumerator SpawnEnemiesWithDelay()
+    {
+        int enemiesToSpawnCount = summoningEnemys.Count;
+
+        for (int i = 0; i < enemiesToSpawnCount; i++)
+        {
+            GameObject enemyToSpawn = summoningEnemys[i];
+            enemyToSpawn.transform.position = GetSpawnPosition();
+            enemyToSpawn.SetActive(true);
+            enemyToSpawn.GetComponent<Enemy>().p_enemyIsActive = true;
+            // make delay
+            if (i < enemiesToSpawnCount - 1)
+            {
+                yield return new WaitForSeconds(enemySpawnDelay);
+            }
+        }
+
+        // Update the battleSceneManagerScript's p_activeEnemies list once, after all enemies are activated
+        battleSceneManagerScript.p_activeEnemies = summoningEnemys;
+    }
+
 
 
 
@@ -104,9 +132,9 @@ public class Spawner : MonoBehaviour
         return new Vector3(Random.Range(-2.2f, 2.5f), 6, 0);
     }
 
-
     void EnemyCounter(int x)
     {
+        enemyCount.Clear();
         x -= 3;
         int randomNumber = Random.Range(1, x + 1);
         enemyCount.Add(randomNumber);
@@ -121,5 +149,13 @@ public class Spawner : MonoBehaviour
 
     }
 
+    void CallTheSupper()
+    {
+        InvokeRepeating("SuperCallingFunc", superCallingWait, superCallingWait);
+    }
+    private void SuperCallingFunc()
+    {
+        Instantiate(enemySuper, GetSpawnPosition(), Quaternion.identity);
 
+    }
 }

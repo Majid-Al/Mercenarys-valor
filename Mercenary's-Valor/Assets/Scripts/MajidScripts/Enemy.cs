@@ -9,30 +9,30 @@ public class Enemy : MonoBehaviour
     HeroBullet heroBullet;
     // these are set un the unity surface
     [SerializeField] float speed = 1;
+    float maxHealth;
     [SerializeField] float health;
     [SerializeField] public float attack;
     [SerializeField] float attackRange;
     float damageRecived;
-    bool isActive = true;
+    public bool p_enemyIsActive = true;
 
-    [SerializeField] BattleSceneManager battleSceneManager;
+    BattleSceneManager battleSceneManager;
 
 
 
     void Start()
     {
+        maxHealth = health;
+        battleSceneManager = GameObject.Find("BattleSceneManager").GetComponent<BattleSceneManager>();
         target = GameObject.Find("Base");
     }
     void Update()
     {
-        if (isActive && target != null)
+        if (p_enemyIsActive && target != null)
         {
             transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
         }
     }
-
-
-
 
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -62,15 +62,11 @@ public class Enemy : MonoBehaviour
     }
     void Gone()
     {
+        health = maxHealth;
+        // transform.position = new Vector3(-5, 0, 0);
+        battleSceneManager.p_activeEnemies.Remove(gameObject);
+        p_enemyIsActive = false;
         gameObject.SetActive(false);
-        transform.position = new Vector3(-5, 0, 0);
-        isActive = false;
-
-        // foreach (var item in battleSceneManager.p_activeEnemies)
-        // {
-        //     Debug.Log("1");
-        // }
-
     }
 }
 
