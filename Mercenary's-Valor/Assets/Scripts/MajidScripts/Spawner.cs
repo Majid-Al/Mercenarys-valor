@@ -12,6 +12,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] GameObject enemySuper;
     int enemyNumbers;
     int waveCount;
+
     List<int> enemyCount = new List<int>();
     List<GameObject> summoningEnemys = new List<GameObject>();
 
@@ -22,9 +23,9 @@ public class Spawner : MonoBehaviour
     List<GameObject> tankEnemyPool = new List<GameObject>();
 
     [SerializeField] private float delayTimeBetweenEnemies;
-    // private float enemySpawnDelay = 0.5f; // Delay between enemy spawns
-    // private float spawnTimer = 0.0f; // Timer to track the delay
 
+    [SerializeField] private float enemySpawnDelay; // Delay between enemy spawns
+    [SerializeField] private float superCallingWait;
 
     void Start()
     {
@@ -42,6 +43,7 @@ public class Spawner : MonoBehaviour
     {
         if (!battleSceneManagerScript.p_liveEnemies && waveCount != 0)
         {
+            CallTheSupper();
             EnemyCounter(enemyNumbers);
             GetInactiveEnemy();
             battleSceneManagerScript.p_liveEnemies = true;
@@ -88,19 +90,42 @@ public class Spawner : MonoBehaviour
                 enemylist[m] -= 1;
             }
 
+            StartCoroutine(SpawnEnemiesWithDelay());
+            // foreach (var enemyToSpawn in summoningEnemys)
+            // {
+            //     enemyToSpawn.transform.position = GetSpawnPosition();
+            //     enemyToSpawn.SetActive(true);
+            //     enemyToSpawn.GetComponent<Enemy>().p_enemyIsActive = true;
+            //     battleSceneManagerScript.p_activeEnemies = summoningEnemys;
 
-            foreach (var enemyToSpawn in summoningEnemys)
-            {
-                enemyToSpawn.transform.position = GetSpawnPosition();
-                enemyToSpawn.SetActive(true);
-                enemyToSpawn.GetComponent<Enemy>().p_enemyIsActive = true;
-                battleSceneManagerScript.p_activeEnemies = summoningEnemys;
-
-            }
+            // }
 
         }
 
     }
+    IEnumerator SpawnEnemiesWithDelay()
+    {
+        int enemiesToSpawnCount = summoningEnemys.Count;
+
+        for (int i = 0; i < enemiesToSpawnCount; i++)
+        {
+            GameObject enemyToSpawn = summoningEnemys[i];
+            enemyToSpawn.transform.position = GetSpawnPosition();
+            enemyToSpawn.SetActive(true);
+            enemyToSpawn.GetComponent<Enemy>().p_enemyIsActive = true;
+            // make delay
+            if (i < enemiesToSpawnCount - 1)
+            {
+                yield return new WaitForSeconds(enemySpawnDelay);
+            }
+        }
+
+        // Update the battleSceneManagerScript's p_activeEnemies list once, after all enemies are activated
+        battleSceneManagerScript.p_activeEnemies = summoningEnemys;
+    }
+
+
+
 
     Vector3 GetSpawnPosition()
     {
@@ -124,4 +149,13 @@ public class Spawner : MonoBehaviour
 
     }
 
+    void CallTheSupper()
+    {
+        InvokeRepeating("SuperCallingFunc", superCallingWait, superCallingWait);
+    }
+    private void SuperCallingFunc()
+    {
+        Instantiate(enemySuper, GetSpawnPosition(), Quaternion.identity);
+
+    }
 }
