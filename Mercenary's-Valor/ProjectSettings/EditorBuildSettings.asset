@@ -6,6 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+<<<<<<< HEAD
     path: Assets/Scenes/WorldMap.unity
     guid: 00bcac99560465249a1637ef7aeb6db8
   - enabled: 1
@@ -14,4 +15,17 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BattleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+=======
+    path: Assets/Scenes/BattleScene.unity
+    guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: 2197a6929f98f694e82a5692a0e1ee00
+  - enabled: 1
+    path: Assets/Scenes/WorldMap2.unity
+    guid: 00bcac99560465249a1637ef7aeb6db8
+  - enabled: 1
+    path: Assets/Scenes/MerceneryCamp.unity
+    guid: ef7e73b507e136a4286561f51d036729
+>>>>>>> Zahra
   m_configObjects: {}
