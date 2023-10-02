@@ -1144,11 +1144,6 @@ MonoBehaviour:
   food: 10
   wood: 10
   increasePercentage: 0.3
-  ChildaA: 0
-  ChildaB: 0
-  ChildaC: 0
-  ChildaD: 0
-  ChildaE: 0
 --- !u!1 &833654100
 GameObject:
   m_ObjectHideFlags: 0
