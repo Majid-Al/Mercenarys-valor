@@ -92,6 +92,7 @@ public class CityPointer : MonoBehaviour
         int increaseAmount = Mathf.RoundToInt(originalWood * increasePercentage);
         wood += increaseAmount;
 
+
         UpdateUI();
 
         childAVisible = !childAVisible;
