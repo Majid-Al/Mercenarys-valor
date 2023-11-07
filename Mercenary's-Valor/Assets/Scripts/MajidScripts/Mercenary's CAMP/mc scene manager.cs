@@ -7,11 +7,10 @@ public class mcscenemanager : MonoBehaviour
     [SerializeField]
     float distance = 1f;
     [SerializeField] private Camera cam;
-    public GameObject bigHouse;
     public GameObject house;
+    public GameObject management;
     public GameObject shop;
-    public GameObject shop2;
-    public GameObject pit;
+    public GameObject arena;
 
     // Start is called before the first frame update
     void Start()
@@ -28,25 +27,21 @@ public class mcscenemanager : MonoBehaviour
             Vector2 touchPosition = GetComponent<Camera>().ScreenToWorldPoint(touch.position);
 
             // Check if either object is close enough to the touch position
-            if (Vector2.Distance(touchPosition, bigHouse.transform.position) < distance)
+            if (Vector2.Distance(touchPosition, house.transform.position) < distance)
             {
-                Debug.Log("bigHouse it is clicked");
+                Debug.Log("House it is clicked");
             }
-            else if (Vector2.Distance(touchPosition, house.transform.position) < distance)
+            else if (Vector2.Distance(touchPosition, management.transform.position) < distance)
             {
-                Debug.Log("house is selected");
+                Debug.Log("management   is selected");
             }
             else if (Vector2.Distance(touchPosition, shop.transform.position) < distance)
             {
                 Debug.Log("shop is selected");
             }
-            else if (Vector2.Distance(touchPosition, shop2.transform.position) < distance)
+            else if (Vector2.Distance(touchPosition, arena.transform.position) < distance)
             {
-                Debug.Log("shop2 is selected");
-            }
-            else if (Vector2.Distance(touchPosition, pit.transform.position) < distance)
-            {
-                Debug.Log("pit is selected");
+                Debug.Log("arena is selected");
             }
 
         }
