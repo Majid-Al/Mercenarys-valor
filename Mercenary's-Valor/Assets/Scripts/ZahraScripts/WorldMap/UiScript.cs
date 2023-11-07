@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,25 +7,22 @@ using UnityEngine.UI;
 public class UiScript : MonoBehaviour
 {
     public Slider slider;
-	// public Gradient gradient;
-	// public Image fill;
+    private int currentFame = 0; // Current fame value
 
+    void Start()
+    {
+        // Initialize slider with an empty value
+        SetFame(currentFame);
+    }
 
-    public void SetMaxHealth(int health)
-	{
-		slider.maxValue = health;
-		slider.value = health;
+    public void AcceptContract()
+    {
+        // Increase the fame value by one when the player accepts a contract
+        SetFame(++currentFame);
+    }
 
-		// fill.color = gradient.Evaluate(1f);
-	}
-
-    public void SetHealth(int health)
-	{
-		slider.value = health;
-
-		// fill.color = gradient.Evaluate(slider.normalizedValue);
-	}
-
-    
-
+    public void SetFame(int Fame)
+    {
+        slider.value = Fame;
+    }
 }

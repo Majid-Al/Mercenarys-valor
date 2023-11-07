@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class LoadSence : MonoBehaviour
 {
     [SerializeField] private string whichscene;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,5 +22,9 @@ public class LoadSence : MonoBehaviour
     public void Load()
     {
         SceneManager.LoadScene(whichscene);
+
     }
+
+  
+    
 }
