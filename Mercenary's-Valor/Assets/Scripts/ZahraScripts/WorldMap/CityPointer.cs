@@ -14,7 +14,7 @@ public class CityPointer : MonoBehaviour
     public GameObject ChildB;
     public GameObject ChildC;
     public GameObject ChildD;
-    public GameObject ChildE;
+    // public GameObject ChildE;
     public GameObject panel;
 
     [Header("Texts")]
@@ -25,10 +25,7 @@ public class CityPointer : MonoBehaviour
     [SerializeField] private TextMeshProUGUI contractText;
 
     [Header("Text's value")]
-    public int stone = 10;
-    public int gold = 10;
-    public int food = 10;
-    public int wood = 10;
+
     private int originalWood = 10; // Store the original wood value
     private int originalfood = 10; // Store the original wood value
     private int originalgold = 10; // Store the original wood value
@@ -40,7 +37,7 @@ public class CityPointer : MonoBehaviour
     private bool childBVisible = true;
     private bool childCVisible = true;
     private bool childDVisible = true;
-    private bool childEVisible = true;
+    // private bool childEVisible = true;
 
 
 
@@ -73,10 +70,7 @@ public class CityPointer : MonoBehaviour
             {
                 HandleChildD();
             }
-            else if (ChildE.activeSelf && Vector2.Distance(touchPosition, ChildE.transform.position) < distance)
-            {
-                HandleChildE();
-            }
+        
         }
     }
 
@@ -86,14 +80,16 @@ public class CityPointer : MonoBehaviour
         panel.SetActive(true);
 
         // Reset the value to the original value (10)
-        wood = originalWood;
+        GameManager.Instance.wood = originalWood;
 
         // Calculate the increase based on the original value (10)
         int increaseAmount = Mathf.RoundToInt(originalWood * increasePercentage);
-        wood += increaseAmount;
+         GameManager.Instance.wood += increaseAmount;
+
 
         UpdateUI();
 
+        //disable the child when touched
         childAVisible = !childAVisible;
 
         if (!childAVisible)
@@ -108,11 +104,11 @@ public class CityPointer : MonoBehaviour
         panel.SetActive(true);
 
         // Reset the  value to the original value (10)
-        stone = originalstone;
+       GameManager.Instance.stone = originalstone;
 
         // Calculate the increase based on the original value (10)
         int increaseAmount = Mathf.RoundToInt(originalstone * increasePercentage);
-        stone += increaseAmount;
+       GameManager.Instance.stone += increaseAmount;
 
         UpdateUI();
 
@@ -130,11 +126,11 @@ public class CityPointer : MonoBehaviour
         panel.SetActive(true);
 
         // Reset the  value to the original value (10)
-        gold = originalgold;
+       GameManager.Instance.gold = originalgold;
 
         // Calculate the increase based on the original value (10)
         int increaseAmount = Mathf.RoundToInt(originalgold * increasePercentage);
-        gold += increaseAmount;
+        GameManager.Instance.gold += increaseAmount;
 
         UpdateUI();
 
@@ -153,11 +149,11 @@ public class CityPointer : MonoBehaviour
         panel.SetActive(true);
 
         // Reset the  value to the original value (10)
-        food = originalfood;
+        GameManager.Instance.food = originalfood;
 
         // Calculate the increase based on the original value (10)
         int increaseAmount = Mathf.RoundToInt(originalfood * increasePercentage);
-        food += increaseAmount;
+        GameManager.Instance.food += increaseAmount;
 
         UpdateUI();
 
@@ -172,36 +168,15 @@ public class CityPointer : MonoBehaviour
 
 
 
-    void HandleChildE()
-    {
-        panel.SetActive(true);
-
-        // Reset the value to the original value (10)
-        stone = originalstone;
-
-        // Calculate the increase based on the original value (10)
-        int increaseAmount = Mathf.RoundToInt(originalstone * increasePercentage);
-        stone += increaseAmount;
-
-        UpdateUI();
-
-        childEVisible = !childEVisible;
-
-        if (!childEVisible)
-        {
-            ChildE.SetActive(false);
-        }
-
-    }
 
 
     void UpdateUI()
     {
         // Update the UI text fields
-        woodText.text = wood.ToString();
-        stoneText.text = stone.ToString();
-        goldText.text = gold.ToString();
-        foodText.text = food.ToString();
+        woodText.text = GameManager.Instance.wood.ToString();
+        stoneText.text =GameManager.Instance.stone.ToString();
+        goldText.text = GameManager.Instance.gold.ToString();
+        foodText.text = GameManager.Instance.food.ToString();
     }
 
     public void DeclineAction()
@@ -230,13 +205,11 @@ public class CityPointer : MonoBehaviour
             ChildD.SetActive(true);
         }
 
-        // Check the visibility state of Child E and toggle it
-        if (!childEVisible)
-        {
-            ChildE.SetActive(true);
-        }
+        
 
     }
 
 
 }
+
+
