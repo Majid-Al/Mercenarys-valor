@@ -7,16 +7,15 @@ public class mcscenemanager : MonoBehaviour
     [SerializeField]
     float distance = 1f;
     [SerializeField] private Camera cam;
-<<<<<<< HEAD
-=======
+
 
     [Header("GameObject")]
     public GameObject bigHouse;
->>>>>>> Zahra
     public GameObject house;
     public GameObject management;
     public GameObject shop;
-    public GameObject arena;
+    public GameObject shop2;
+    public GameObject pit;
 
     [Header("Panels")]
     public GameObject panelBigHouse;
@@ -46,15 +45,7 @@ public class mcscenemanager : MonoBehaviour
             Vector2 touchPosition = GetComponent<Camera>().ScreenToWorldPoint(touch.position);
 
             // Check if either object is close enough to the touch position
-<<<<<<< HEAD
-            if (Vector2.Distance(touchPosition, house.transform.position) < distance)
-            {
-                Debug.Log("House it is clicked");
-            }
-            else if (Vector2.Distance(touchPosition, management.transform.position) < distance)
-            {
-                Debug.Log("management   is selected");
-=======
+
             if (bigHouse.activeSelf && Vector2.Distance(touchPosition, bigHouse.transform.position) < distance)
             {
                 Debug.Log("bigHouse it is clicked");
@@ -65,18 +56,13 @@ public class mcscenemanager : MonoBehaviour
             {
                 Debug.Log("house is selected");
                 Handlehouse();
->>>>>>> Zahra
             }
             else if (bigHouse.activeSelf && Vector2.Distance(touchPosition, shop.transform.position) < distance)
             {
                 Debug.Log("shop is selected");
                 Handleshop();
             }
-<<<<<<< HEAD
-            else if (Vector2.Distance(touchPosition, arena.transform.position) < distance)
-            {
-                Debug.Log("arena is selected");
-=======
+
             else if (bigHouse.activeSelf && Vector2.Distance(touchPosition, shop2.transform.position) < distance)
             {
                 Debug.Log("shop2 is selected");
@@ -86,7 +72,6 @@ public class mcscenemanager : MonoBehaviour
             {
                 Debug.Log("pit is selected");
                 Handlepit();
->>>>>>> Zahra
             }
 
         }
