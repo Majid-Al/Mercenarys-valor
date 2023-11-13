@@ -12,7 +12,6 @@ public class mcscenemanager : MonoBehaviour
     [Header("GameObject")]
     public GameObject bigHouse;
     public GameObject house;
-    public GameObject management;
     public GameObject shop;
     public GameObject shop2;
     public GameObject pit;
