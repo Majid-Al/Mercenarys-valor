@@ -10,6 +10,9 @@ public class Spawner : MonoBehaviour
     [SerializeField] GameObject enemyFast;
     [SerializeField] GameObject enemyTank;
     [SerializeField] GameObject enemySuper;
+    [SerializeField] int enemyPoolCap = 5;
+    [SerializeField] Vector3 spawnLocationRange1;
+    [SerializeField] Vector3 spawnLocationRange2;
     int enemyNumbers;
     int waveCount;
 
@@ -33,10 +36,10 @@ public class Spawner : MonoBehaviour
         waveCount = GameManager.Instance.p_waveCount;
 
         // Initialize the Enemys pool
-        CreatePool(enemyBasic, basicEnemyPool, 5);
-        CreatePool(enemyRange, rangeEnemyPool, 5);
-        CreatePool(enemyFast, fastEnemyPool, 5);
-        CreatePool(enemyTank, tankEnemyPool, 5);
+        CreatePool(enemyBasic, basicEnemyPool, enemyPoolCap);
+        CreatePool(enemyRange, rangeEnemyPool, enemyPoolCap);
+        CreatePool(enemyFast, fastEnemyPool, enemyPoolCap);
+        CreatePool(enemyTank, tankEnemyPool, enemyPoolCap);
 
     }
     void Update()
@@ -129,7 +132,7 @@ public class Spawner : MonoBehaviour
 
     Vector3 GetSpawnPosition()
     {
-        return new Vector3(Random.Range(-2.2f, 2.5f), 6, 0);
+        return new Vector3(Random.Range(spawnLocationRange1.x, spawnLocationRange2.x), Random.Range(spawnLocationRange1.y, spawnLocationRange2.y), 0);
     }
 
     void EnemyCounter(int x)

@@ -6,7 +6,7 @@ public class BattleSceneManager : MonoBehaviour
 {
     public bool p_canHeroWalk = true;
     public float p_attackDamage = 40;
-    public float p_cannonDamage = 5;
+    public float p_cannonDamage = 50;
 
     public bool p_attackNearestEnemy = false;
     public bool p_liveEnemies = false;

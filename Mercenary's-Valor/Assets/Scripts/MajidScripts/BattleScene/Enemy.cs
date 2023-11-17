@@ -47,13 +47,6 @@ public class Enemy : MonoBehaviour
             if (health < 0)
                 Gone();
         }
-        if (other.gameObject.tag == "CBullet")
-        {
-            damageRecived = battleSceneManager.p_cannonDamage;
-            GetDamage();
-            if (health < 0)
-                Gone();
-        }
     }
 
     void GetDamage()

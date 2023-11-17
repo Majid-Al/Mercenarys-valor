@@ -31,6 +31,12 @@ public class PlayerScript : MonoBehaviour
 
             damageRecived = theScript.attack;
             GetDamage();
+        }else if (other.gameObject.tag == "EnemyAir")
+        {
+            var theScript = other.gameObject.GetComponent<EnemyAir>();
+
+            damageRecived = theScript.attack;
+            GetDamage();
         }
     }
 

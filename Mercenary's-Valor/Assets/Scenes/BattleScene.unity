@@ -191,11 +191,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &359615693 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4860004223587445007, guid: 8f83869c3b62c0e40b448d0a23e245cd, type: 3}
-  m_PrefabInstance: {fileID: 1440933488}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &486732418
 GameObject:
   m_ObjectHideFlags: 3
@@ -310,7 +305,7 @@ Transform:
   m_GameObject: {fileID: 504402776}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 13.9, y: 10.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -334,6 +329,9 @@ MonoBehaviour:
   enemyFast: {fileID: 5624510159435592714, guid: ba1f1351c350d734a8f7f4ae3d492680, type: 3}
   enemyTank: {fileID: 6617129298433470029, guid: be4adba6b104f6f4da17860cb2fb00b5, type: 3}
   enemySuper: {fileID: 8255061801454987020, guid: 6a0445fc424df5d45b27fd8ac43b2265, type: 3}
+  enemyPoolCap: 5
+  spawnLocationRange1: {x: -11, y: 1, z: 0}
+  spawnLocationRange2: {x: 11, y: 10, z: 0}
   delayTimeBetweenEnemies: 5
   enemySpawnDelay: 0.25
   superCallingWait: 60
@@ -16041,6 +16039,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_waveCount: 4
   p_enemyNumber: 5
+  stone: 10
+  gold: 10
+  food: 10
+  wood: 10
+  UIstone: 100
+  UIgold: 100
+  UIfood: 100
+  UIwood: 100
+  UIwoodText: {fileID: 0}
+  UIstoneText: {fileID: 0}
+  UIgoldText: {fileID: 0}
+  UIfoodText: {fileID: 0}
 --- !u!1 &892324571 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6772179306060591057, guid: b9bacd26ef2ae13478a3e8b4e3801760, type: 3}
@@ -16664,6 +16674,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1100699363}
     m_Modifications:
+    - target: {fileID: 5424118076625793234, guid: 8f83869c3b62c0e40b448d0a23e245cd, type: 3}
+      propertyPath: fireRate
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5424118076625793234, guid: 8f83869c3b62c0e40b448d0a23e245cd, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5424118076625793234, guid: 8f83869c3b62c0e40b448d0a23e245cd, type: 3}
+      propertyPath: bulletSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5424118076625793234, guid: 8f83869c3b62c0e40b448d0a23e245cd, type: 3}
+      propertyPath: battleSceneManagerScript
+      value: 
+      objectReference: {fileID: 604562656}
     - target: {fileID: 5646048016463512828, guid: 8f83869c3b62c0e40b448d0a23e245cd, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.3
@@ -16724,33 +16750,13 @@ PrefabInstance:
     - {fileID: 5004309824780527398, guid: 8f83869c3b62c0e40b448d0a23e245cd, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5646048016463512830, guid: 8f83869c3b62c0e40b448d0a23e245cd, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1440933491}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f83869c3b62c0e40b448d0a23e245cd, type: 3}
 --- !u!4 &1440933489 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5646048016463512828, guid: 8f83869c3b62c0e40b448d0a23e245cd, type: 3}
   m_PrefabInstance: {fileID: 1440933488}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1440933491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1322465135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 299c102224c670a48bd293f4aea7abd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shootPoint: {fileID: 359615693}
-  bullet: {fileID: 6546827440124718432, guid: b246d876924363c4cbdbf2480b20eef4, type: 3}
-  fireRate: 2
-  bulletSpeed: 3
-  beginShooting: 0
 --- !u!1001 &1484927420
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16759,6 +16765,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1100699363}
     m_Modifications:
+    - target: {fileID: 1604721259772239276, guid: daccd756ab9120b47ab5bd19fbfebef3, type: 3}
+      propertyPath: health
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 1604721259772239276, guid: daccd756ab9120b47ab5bd19fbfebef3, type: 3}
       propertyPath: battleSceneManager
       value: 
@@ -16812,6 +16822,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 604562654}
     - target: {fileID: 7339880944619671341, guid: daccd756ab9120b47ab5bd19fbfebef3, type: 3}
+      propertyPath: fireRate
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339880944619671341, guid: daccd756ab9120b47ab5bd19fbfebef3, type: 3}
       propertyPath: battleSceneManager
       value: 
       objectReference: {fileID: 604562654}
@@ -16864,7 +16878,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.87538975, y: 0.509}
   m_AnchorMax: {x: 1, y: 0.57559717}
-  m_AnchoredPosition: {x: -0.40299988, y: -0.9000015}
+  m_AnchoredPosition: {x: -0.40298462, y: -0.9000015}
   m_SizeDelta: {x: -4, y: -2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1509720530
@@ -16950,6 +16964,18 @@ PrefabInstance:
       propertyPath: sceneManager
       value: 
       objectReference: {fileID: 604562654}
+    - target: {fileID: 5424118076625793234, guid: 8f83869c3b62c0e40b448d0a23e245cd, type: 3}
+      propertyPath: fireRate
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5424118076625793234, guid: 8f83869c3b62c0e40b448d0a23e245cd, type: 3}
+      propertyPath: bulletSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5424118076625793234, guid: 8f83869c3b62c0e40b448d0a23e245cd, type: 3}
+      propertyPath: battleSceneManagerScript
+      value: 
+      objectReference: {fileID: 604562656}
     - target: {fileID: 5646048016463512828, guid: 8f83869c3b62c0e40b448d0a23e245cd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.9865481
@@ -17165,7 +17191,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.87538975, y: 0.43520144}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -0.40299988, y: 0.5999985}
+  m_AnchoredPosition: {x: -0.40298462, y: 0.5999985}
   m_SizeDelta: {x: -4, y: -1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2081863667
@@ -17257,8 +17283,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 1094959851}
     m_Modifications:
     - target: {fileID: 183644795624920555, guid: 1b0f4c001a540a64094b1c3071e9b32e, type: 3}
+      propertyPath: p_cannonDamage
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 183644795624920555, guid: 1b0f4c001a540a64094b1c3071e9b32e, type: 3}
       propertyPath: delayTimeForWaves
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 183644795624920555, guid: 1b0f4c001a540a64094b1c3071e9b32e, type: 3}
+      propertyPath: p_attackNearestEnemy
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2060764562110678739, guid: 1b0f4c001a540a64094b1c3071e9b32e, type: 3}
       propertyPath: m_Name
