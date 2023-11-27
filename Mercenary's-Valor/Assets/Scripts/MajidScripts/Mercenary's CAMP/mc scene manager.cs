@@ -10,25 +10,22 @@ public class mcscenemanager : MonoBehaviour
 
 
     [Header("GameObject")]
-    public GameObject bigHouse;
+    public GameObject Managment;
     public GameObject house;
     public GameObject shop;
-    public GameObject shop2;
-    public GameObject pit;
+    public GameObject area;
 
     [Header("Panels")]
-    public GameObject panelBigHouse;
+    public GameObject panelManagment;
     public GameObject panelHouse;
     public GameObject panelShop;
-    public GameObject panelShop2;
-    public GameObject panelPit;
+    public GameObject panelarea;
 
     [Header("Boolean")]
-    private bool bigHouseVisible = true;
+    private bool ManagmentVisible = true;
     private bool houseVisible = true;
     private bool shopVisible = true;
-    private bool shop2Visible = true;
-    private bool pitVisible = true;
+    private bool areaVisible = true;
 
     void Start()
     {
@@ -45,50 +42,43 @@ public class mcscenemanager : MonoBehaviour
 
             // Check if either object is close enough to the touch position
 
-            if (bigHouse.activeSelf && Vector2.Distance(touchPosition, bigHouse.transform.position) < distance)
+            if (Managment.activeSelf && Vector2.Distance(touchPosition, Managment.transform.position) < distance)
             {
                 Debug.Log("bigHouse it is clicked");
-                HandlebigHouse();
+                HandleManagment();
 
             }
-            else if (bigHouse.activeSelf && Vector2.Distance(touchPosition, house.transform.position) < distance)
+            else if (house.activeSelf && Vector2.Distance(touchPosition, house.transform.position) < distance)
             {
                 Debug.Log("house is selected");
                 Handlehouse();
             }
-            else if (bigHouse.activeSelf && Vector2.Distance(touchPosition, shop.transform.position) < distance)
+            else if (shop.activeSelf && Vector2.Distance(touchPosition, shop.transform.position) < distance)
             {
                 Debug.Log("shop is selected");
                 Handleshop();
             }
 
-            else if (bigHouse.activeSelf && Vector2.Distance(touchPosition, shop2.transform.position) < distance)
+            else if (area.activeSelf && Vector2.Distance(touchPosition, area.transform.position) < distance)
             {
-                Debug.Log("shop2 is selected");
-                Handleshop2();
-            }
-            else if (bigHouse.activeSelf && Vector2.Distance(touchPosition, pit.transform.position) < distance)
-            {
-                Debug.Log("pit is selected");
-                Handlepit();
+                Handlearea();
             }
 
         }
     }
 
-    void HandlebigHouse()
+    void HandleManagment()
     {
-        panelBigHouse.SetActive(true);
+        panelManagment.SetActive(true);
 
-        bigHouseVisible = !bigHouseVisible;
+       ManagmentVisible = !ManagmentVisible;
 
-        if (!bigHouseVisible)
+        if (!ManagmentVisible)
         {
-            bigHouse.SetActive(false);
+            Managment.SetActive(false);
             house.SetActive(false);
             shop.SetActive(false);
-            shop2.SetActive(false);
-            pit.SetActive(false);
+           area.SetActive(false);
 
         }
     }
@@ -100,11 +90,10 @@ public class mcscenemanager : MonoBehaviour
 
         if (!houseVisible)
         {
-            bigHouse.SetActive(false);
+            Managment.SetActive(false);
             house.SetActive(false);
             shop.SetActive(false);
-            shop2.SetActive(false);
-            pit.SetActive(false);
+           area.SetActive(false);
 
         }
     }
@@ -116,104 +105,73 @@ public class mcscenemanager : MonoBehaviour
 
         if (!shopVisible)
         {
-            bigHouse.SetActive(false);
+            Managment.SetActive(false);
             house.SetActive(false);
             shop.SetActive(false);
-            shop2.SetActive(false);
-            pit.SetActive(false);
+           area.SetActive(false);
 
         }
     }
-    void Handleshop2()
+    
+    void Handlearea()
     {
-        panelShop2.SetActive(true);
+        panelarea.SetActive(true);
 
-        shop2Visible = !shop2Visible;
+        areaVisible = !areaVisible;
 
-        if (!shop2Visible)
+        if (!areaVisible)
         {
-            bigHouse.SetActive(false);
+            Managment.SetActive(false);
             house.SetActive(false);
             shop.SetActive(false);
-            shop2.SetActive(false);
-            pit.SetActive(false);
-
-        }
-    }
-    void Handlepit()
-    {
-        panelPit.SetActive(true);
-
-        pitVisible = !pitVisible;
-
-        if (!pitVisible)
-        {
-            bigHouse.SetActive(false);
-            house.SetActive(false);
-            shop.SetActive(false);
-            shop2.SetActive(false);
-            pit.SetActive(false);
+            area.SetActive(false);
 
         }
     }
     public void DeclineAction()
     {
-        if (!bigHouseVisible)
+        if (!ManagmentVisible)
         {
-            bigHouse.SetActive(true);
+           Managment.SetActive(true);
             house.SetActive(true);
             shop.SetActive(true);
-            shop2.SetActive(true);
-            pit.SetActive(true);
+            area.SetActive(true);
 
-            bigHouseVisible = true;
+            ManagmentVisible = true;
 
 
         }
         else if (!houseVisible)
         {
-            bigHouse.SetActive(true);
+           Managment.SetActive(true);
             house.SetActive(true);
             shop.SetActive(true);
-            shop2.SetActive(true);
-            pit.SetActive(true);
+            area.SetActive(true);
 
             houseVisible = true;
 
         }
         if (!shopVisible)
         {
-            bigHouse.SetActive(true);
+           Managment.SetActive(true);
             house.SetActive(true);
             shop.SetActive(true);
-            shop2.SetActive(true);
-            pit.SetActive(true);
+            area.SetActive(true);
 
 
             shopVisible = true;
 
         }
-        if (shop2Visible)
+        
+        if (areaVisible)
         {
-            bigHouse.SetActive(true);
+           Managment.SetActive(true);
             house.SetActive(true);
             shop.SetActive(true);
-            shop2.SetActive(true);
-            pit.SetActive(true);
-
-            shop2Visible = true;
-        }
-
-        if (pitVisible)
-        {
-            bigHouse.SetActive(true);
-            house.SetActive(true);
-            shop.SetActive(true);
-            shop2.SetActive(true);
-            pit.SetActive(true);
+            area.SetActive(true);
 
 
-            pitVisible = true;
+            areaVisible = true;
         }
     }
 }

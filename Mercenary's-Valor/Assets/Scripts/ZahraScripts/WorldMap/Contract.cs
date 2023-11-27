@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class Contract : MonoBehaviour
 {
+
     public GameObject[] cityChildren;
+
+
 
     void Start()
     {
@@ -14,4 +19,7 @@ public class Contract : MonoBehaviour
     }
 
 }
+
+
+
 

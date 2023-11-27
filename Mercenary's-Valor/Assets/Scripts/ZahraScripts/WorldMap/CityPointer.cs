@@ -86,7 +86,6 @@ public class CityPointer : MonoBehaviour
         int increaseAmount = Mathf.RoundToInt(originalWood * increasePercentage);
          GameManager.Instance.wood += increaseAmount;
 
-
         UpdateUI();
 
         //disable the child when touched
