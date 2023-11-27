@@ -40,10 +40,10 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-         UIwoodText.text = UIwood.ToString();
-        UIstoneText.text =UIstone.ToString();
-        UIgoldText.text = UIgold.ToString();
-        UIfoodText.text = UIfood.ToString();
+       // UIwoodText.text = UIwood.ToString();
+       // UIstoneText.text =UIstone.ToString();
+       // UIgoldText.text = UIgold.ToString();
+       // UIfoodText.text = UIfood.ToString();
 
     }
 

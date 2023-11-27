@@ -5,6 +5,7 @@ using UnityEngine;
 public class Switch : MonoBehaviour
 {
     [SerializeField] GameObject sceneManager;
+    [SerializeField] GameObject MenuPanell;
     BattleSceneManager battleSceneManagerScript;
     void Start()
     {
@@ -19,6 +20,12 @@ public class Switch : MonoBehaviour
     public void ChangeTheAttack()
     {
         battleSceneManagerScript.p_attackNearestEnemy = !battleSceneManagerScript.p_attackNearestEnemy;
+    }
+
+    public void PauseMenu()
+    {
+        MenuPanell.SetActive(true);
+        Time.timeScale = 0.0f;  
     }
 
 }
