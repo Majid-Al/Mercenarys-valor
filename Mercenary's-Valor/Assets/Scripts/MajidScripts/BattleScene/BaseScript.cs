@@ -6,7 +6,7 @@ public class BaseScript : MonoBehaviour
 {
     [SerializeField] private float health;
     float damageRecived;
-    [SerializeField] GameObject battleSceneManager;
+    [SerializeField] BattleSceneManager battleSceneManager;
 
 
     // Start is called before the first frame update
@@ -43,6 +43,7 @@ public class BaseScript : MonoBehaviour
     }
     void Die()
     {
+        battleSceneManager.endingPanellAnimator.SetBool("LoosingBool", true);
         Destroy(gameObject);
 
     }

@@ -30,6 +30,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private float enemySpawnDelay; // Delay between enemy spawns
     [SerializeField] private float superCallingWait;
 
+    
     void Start()
     {
         enemyNumbers = GameManager.Instance.p_enemyNumber;
@@ -44,13 +45,14 @@ public class Spawner : MonoBehaviour
     }
     void Update()
     {
-        if (!battleSceneManagerScript.p_liveEnemies && waveCount != 0)
+        if (!battleSceneManagerScript.p_liveEnemies  && waveCount != 0)
         {
             CallTheSupper();
             EnemyCounter(enemyNumbers);
             GetInactiveEnemy();
             battleSceneManagerScript.p_liveEnemies = true;
-            waveCount -= 1;
+            waveCount = waveCount - 1;
+            battleSceneManagerScript.p_waveNumberOriginal = waveCount;
         }
 
     }
@@ -70,6 +72,9 @@ public class Spawner : MonoBehaviour
 
         List<int> enemylist = enemyCount;
         summoningEnemys.Clear();
+
+      
+
         for (int i = 0; i < enemyNumbers; i++)
         {
             if (enemylist[0] > 0)

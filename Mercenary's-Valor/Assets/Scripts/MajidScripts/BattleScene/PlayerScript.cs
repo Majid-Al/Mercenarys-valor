@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    [SerializeField] GameObject battleSceneManager;
+    [SerializeField] BattleSceneManager battleSceneManager;
 
     [SerializeField] private float health;
     float damageRecived;
@@ -48,6 +48,7 @@ public class PlayerScript : MonoBehaviour
     }
     void Die()
     {
+        battleSceneManager.endingPanellAnimator.SetBool("LoosingBool", true);
         Destroy(gameObject);
     }
 }
