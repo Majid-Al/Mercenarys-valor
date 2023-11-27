@@ -69,27 +69,32 @@ public class Spawner : MonoBehaviour
 
     void GetInactiveEnemy()
     {
-
         List<int> enemylist = enemyCount;
         summoningEnemys.Clear();
 
-      
+        int totalEnemies = enemylist[0] + enemylist[1] + enemylist[2] + enemylist[3];
+        summoningEnemys.Capacity = totalEnemies;
+
+        ExpandPoolIfRequired(rangeEnemyPool, enemylist[1]);
+        ExpandPoolIfRequired(basicEnemyPool, enemylist[0]);
+        ExpandPoolIfRequired(fastEnemyPool, enemylist[2]);
+        ExpandPoolIfRequired(tankEnemyPool, enemylist[3]);
 
         for (int i = 0; i < enemyNumbers; i++)
         {
-            if (enemylist[0] > 0)
+            if (enemylist[0] > 0 && basicEnemyPool.Count > i)
             {
                 summoningEnemys.Add(basicEnemyPool[i]);
             }
-            if (enemylist[1] > 0)
+            if (enemylist[1] > 0 && rangeEnemyPool.Count > i)
             {
                 summoningEnemys.Add(rangeEnemyPool[i]);
             }
-            if (enemylist[2] > 0)
+            if (enemylist[2] > 0 && fastEnemyPool.Count > i)
             {
                 summoningEnemys.Add(fastEnemyPool[i]);
             }
-            if (enemylist[3] > 0)
+            if (enemylist[3] > 0 && tankEnemyPool.Count > i)
             {
                 summoningEnemys.Add(tankEnemyPool[i]);
             }
@@ -97,23 +102,18 @@ public class Spawner : MonoBehaviour
             {
                 enemylist[m] -= 1;
             }
-
-            StartCoroutine(SpawnEnemiesWithDelay());
-            // foreach (var enemyToSpawn in summoningEnemys)
-            // {
-            //     enemyToSpawn.transform.position = GetSpawnPosition();
-            //     enemyToSpawn.SetActive(true);
-            //     enemyToSpawn.GetComponent<Enemy>().p_enemyIsActive = true;
-            //     battleSceneManagerScript.p_activeEnemies = summoningEnemys;
-
-            // }
-
         }
 
+        StartCoroutine(SpawnEnemiesWithDelay());
     }
+
+
+
+
+
     IEnumerator SpawnEnemiesWithDelay()
     {
-        int enemiesToSpawnCount = summoningEnemys.Count;
+        int enemiesToSpawnCount = Mathf.Min(summoningEnemys.Count, summoningEnemys.Count);
 
         for (int i = 0; i < enemiesToSpawnCount; i++)
         {
@@ -155,6 +155,21 @@ public class Spawner : MonoBehaviour
         x = x - (randomNumber - 1);
         enemyCount.Add(x);
 
+    }
+
+    void ExpandPoolIfRequired(List<GameObject> pool, int requiredSize)
+    {
+        int currentSize = pool.Count;
+        if (currentSize < requiredSize)
+        {
+            int amountToAdd = requiredSize - currentSize;
+            for (int i = 0; i < amountToAdd; i++)
+            {
+                GameObject spawnedEnemy = Instantiate(enemyBasic, Vector3.zero, Quaternion.identity);
+                spawnedEnemy.SetActive(false);
+                pool.Add(spawnedEnemy);
+            }
+        }
     }
 
     void CallTheSupper()

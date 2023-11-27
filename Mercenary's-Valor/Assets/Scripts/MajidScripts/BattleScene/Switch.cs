@@ -14,7 +14,6 @@ public class Switch : MonoBehaviour
     public void OnImageClicked()
     {
         battleSceneManagerScript.p_canHeroWalk = !battleSceneManagerScript.p_canHeroWalk;
-        Debug.Log("changed");
     }
 
     public void ChangeTheAttack()
@@ -22,10 +21,15 @@ public class Switch : MonoBehaviour
         battleSceneManagerScript.p_attackNearestEnemy = !battleSceneManagerScript.p_attackNearestEnemy;
     }
 
-    public void PauseMenu()
+    public void PauseMenuActive()
     {
         MenuPanell.SetActive(true);
         Time.timeScale = 0.0f;  
+    }
+    public void PauseMenuDeactive()
+    {
+        MenuPanell.SetActive(false);
+        Time.timeScale = 1.0f;
     }
 
 }

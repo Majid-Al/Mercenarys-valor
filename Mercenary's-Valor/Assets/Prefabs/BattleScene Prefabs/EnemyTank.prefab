@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: -519510107194696362}
   - component: {fileID: -7533812386904368726}
   - component: {fileID: 7703063670326371244}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemyTank
-  m_TagString: Enemy
+  m_TagString: EnemyAir
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6617129298433470029}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af24818f3f648f644868822d125e2b4b, type: 3}
   m_Name: 
@@ -184,7 +184,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6617129298433470029}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a5adea076c9c2b4da6c646fccab4329, type: 3}
   m_Name: 

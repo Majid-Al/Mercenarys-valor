@@ -29,9 +29,6 @@ public class BattleSceneManager : MonoBehaviour
     private void Start()
     {
         p_enemiesNumberOriginal = GameManager.Instance.p_enemyNumber * p_waveNumberOriginal;
-        Debug.Log("p_waveNumberOriginal  =" +p_waveNumberOriginal);
-        Debug.Log("GameManager.Instance.p_enemyNumber  = "+GameManager.Instance.p_enemyNumber);
-        Debug.Log("p_enemiesNumberOriginal  = " + p_enemiesNumberOriginal);
         EnemyCounterUptade();
 
     }
