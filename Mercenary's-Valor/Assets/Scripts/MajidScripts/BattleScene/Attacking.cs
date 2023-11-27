@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Attacking : MonoBehaviour
@@ -29,7 +30,7 @@ public class Attacking : MonoBehaviour
     void Update()
     {
 
-        if (p_beginShooting == true)
+        if (p_beginShooting == true && battleSceneManagerScript.p_canHeroWalk == true)
         {
             StartCoroutine(Shoot());
             p_beginShooting = false;
@@ -118,6 +119,10 @@ public class Attacking : MonoBehaviour
             bulletRigidbody2d.velocity = 1 * transform.right;
             shot.GetComponent<HeroBullet>().SetTarget(firstOne);
             // Destroy(shot, 3f);
+            if (battleSceneManagerScript.p_canHeroWalk == false ) {
+                Debug.Log("came to the brake");
+                yield break;
+            }
             yield return new WaitForSeconds(fireRate);
         }
     }
