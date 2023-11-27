@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: -5161566722578232436}
   - component: {fileID: -519510107194696362}
   - component: {fileID: -7533812386904368726}
-  m_Layer: 0
+  - component: {fileID: 7703063670326371244}
+  m_Layer: 7
   m_Name: EnemyTank
-  m_TagString: Enemy
+  m_TagString: EnemyAir
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,9 +100,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.0001
+  m_Mass: 10
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -113,7 +114,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &-519510107194696362
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -166,14 +167,30 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6617129298433470029}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af24818f3f648f644868822d125e2b4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 6772179306060591057, guid: b9bacd26ef2ae13478a3e8b4e3801760, type: 3}
   speed: 1
-  health: 150
-  attack: 30
+  health: 100
+  attack: 50
   attackRange: 0.1
-  battleSceneManager: {fileID: 183644795624920555, guid: 1b0f4c001a540a64094b1c3071e9b32e, type: 3}
+  p_enemyIsActive: 1
+--- !u!114 &7703063670326371244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6617129298433470029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a5adea076c9c2b4da6c646fccab4329, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1.8
+  health: 100
+  attack: 40
+  attackRange: 0.1
+  p_enemyIsActive: 1

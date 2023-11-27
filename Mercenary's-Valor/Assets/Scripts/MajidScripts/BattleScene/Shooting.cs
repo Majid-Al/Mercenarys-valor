@@ -9,22 +9,23 @@ public class Shooting : MonoBehaviour
     [SerializeField] float fireRate = 2f;
     [SerializeField] float bulletSpeed = 1;
     float shootCounter = 1;
-
+    [SerializeField] BattleSceneManager battleSceneManagerScript;
     public bool beginShooting = false;
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        shootCounter -= fireRate / 2 * Time.deltaTime;
-        if (beginShooting == true)
+        if (battleSceneManagerScript.p_canHeroWalk == false)
         {
-            InvokeRepeating("StartShooting", 0f, 0.5f);
-            beginShooting = false;
+            shootCounter -= fireRate / 2 * Time.deltaTime;
+            if (beginShooting)
+            {
+                InvokeRepeating("StartShooting", 0f, 0.5f);
+            }
+        }
+        else
+        {
+            CancelInvoke(); // Stop shooting when p_canHeroWalk is true
+            shootCounter = 1;
         }
     }
 
@@ -39,7 +40,7 @@ public class Shooting : MonoBehaviour
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             shot.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             shootCounter = 1;
-            Destroy(shot, 3f);
+            Destroy(shot, 4.6f);
         }
     }
 }

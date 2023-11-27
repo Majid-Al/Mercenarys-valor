@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    [SerializeField] GameObject battleSceneManager;
+    [SerializeField] BattleSceneManager battleSceneManager;
 
     [SerializeField] private float health;
     float damageRecived;
@@ -31,6 +31,12 @@ public class PlayerScript : MonoBehaviour
 
             damageRecived = theScript.attack;
             GetDamage();
+        }else if (other.gameObject.tag == "EnemyAir")
+        {
+            var theScript = other.gameObject.GetComponent<EnemyAir>();
+
+            damageRecived = theScript.attack;
+            GetDamage();
         }
     }
 
@@ -42,6 +48,7 @@ public class PlayerScript : MonoBehaviour
     }
     void Die()
     {
+        battleSceneManager.endingPanellAnimator.SetBool("LoosingBool", true);
         Destroy(gameObject);
     }
 }

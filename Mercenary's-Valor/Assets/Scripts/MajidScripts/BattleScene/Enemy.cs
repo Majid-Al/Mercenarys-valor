@@ -47,13 +47,6 @@ public class Enemy : MonoBehaviour
             if (health < 0)
                 Gone();
         }
-        if (other.gameObject.tag == "CBullet")
-        {
-            damageRecived = battleSceneManager.p_cannonDamage;
-            GetDamage();
-            if (health < 0)
-                Gone();
-        }
     }
 
     void GetDamage()
@@ -65,6 +58,8 @@ public class Enemy : MonoBehaviour
         health = maxHealth;
         // transform.position = new Vector3(-5, 0, 0);
         battleSceneManager.p_activeEnemies.Remove(gameObject);
+        battleSceneManager.p_enemiesNumberOriginal--;
+        battleSceneManager.EnemyCounterUptade();
         p_enemyIsActive = false;
         gameObject.SetActive(false);
     }

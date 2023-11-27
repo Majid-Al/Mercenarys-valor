@@ -5,6 +5,7 @@ using UnityEngine;
 public class Switch : MonoBehaviour
 {
     [SerializeField] GameObject sceneManager;
+    [SerializeField] GameObject MenuPanell;
     BattleSceneManager battleSceneManagerScript;
     void Start()
     {
@@ -13,12 +14,22 @@ public class Switch : MonoBehaviour
     public void OnImageClicked()
     {
         battleSceneManagerScript.p_canHeroWalk = !battleSceneManagerScript.p_canHeroWalk;
-        Debug.Log("changed");
     }
 
     public void ChangeTheAttack()
     {
         battleSceneManagerScript.p_attackNearestEnemy = !battleSceneManagerScript.p_attackNearestEnemy;
+    }
+
+    public void PauseMenuActive()
+    {
+        MenuPanell.SetActive(true);
+        Time.timeScale = 0.0f;  
+    }
+    public void PauseMenuDeactive()
+    {
+        MenuPanell.SetActive(false);
+        Time.timeScale = 1.0f;
     }
 
 }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1226514672586670797}
   - component: {fileID: 5877565567854269463}
   - component: {fileID: 4479286667261939947}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EnemySuper
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -171,9 +171,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af24818f3f648f644868822d125e2b4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 6772179306060591057, guid: b9bacd26ef2ae13478a3e8b4e3801760, type: 3}
   speed: 1.1
   health: 50
   attack: 100
   attackRange: 0.1
-  battleSceneManager: {fileID: 183644795624920555, guid: 1b0f4c001a540a64094b1c3071e9b32e, type: 3}
+  p_enemyIsActive: 1
