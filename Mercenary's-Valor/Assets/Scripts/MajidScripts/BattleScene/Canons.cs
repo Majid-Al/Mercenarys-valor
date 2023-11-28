@@ -10,15 +10,16 @@ public class Canons : MonoBehaviour
     public GameObject cannon2;
     public GameObject sceneManager;
     bool canHeroWalk;
-    [SerializeField] float distance = 1.5f;
+    [SerializeField] float distance = 2f;
 
-
+    public LineRenderer lineRenderer;
     bool startTheAttack = true;
     private Camera cam;
 
     void Start()
     {
         cam = Camera.main;
+        lineRenderer.enabled = false;
     }
 
     void Update()
@@ -31,10 +32,11 @@ public class Canons : MonoBehaviour
             // starts the attack
             if (startTheAttack && Input.touchCount > 0)
             {
-                Thread.Sleep(3000);
-                cannon1.GetComponent<Shooting>().beginShooting = true;
-                cannon2.GetComponent<Shooting>().beginShooting = true;
-                startTheAttack = false;
+                // Thread.Sleep(3000);
+                // cannon1.GetComponent<Shooting>().beginShooting = true;
+                // cannon2.GetComponent<Shooting>().beginShooting = true;
+                // startTheAttack = false;
+                StartCoroutine(StartCannonAfterDelay());
             }
 
             Touch touch = Input.GetTouch(0);
@@ -69,15 +71,39 @@ public class Canons : MonoBehaviour
                         }
                     }
                 }
+                
             }
+            
+        }
+        if (Input.touchCount == 0)
+        {
+            lineRenderer.enabled = false;
         }
     }
+    IEnumerator StartCannonAfterDelay()
+    {
+        yield return new WaitForSeconds(1.5f);
+        cannon1.GetComponent<Shooting>().beginShooting = true;
+        cannon2.GetComponent<Shooting>().beginShooting = true;
+        startTheAttack = false;
+    }
 
+    // all thanks to ChatGPT!!
     private void RotateObject(GameObject obj, Vector2 touchPosition)
     {
         Vector2 direction = touchPosition - (Vector2)obj.transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 180;
+
         obj.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+        // Change the line renderer's position by 180 degrees from the cannon's direction
+        Vector2 lineDirection = (Vector2)obj.transform.position - touchPosition;
+        float lineAngle = Mathf.Atan2(lineDirection.y, lineDirection.x) * Mathf.Rad2Deg;
+
+        Vector2 endpoint = (Vector2)obj.transform.position + new Vector2(Mathf.Cos(lineAngle * Mathf.Deg2Rad), Mathf.Sin(lineAngle * Mathf.Deg2Rad)) * 10; // Change 10 to the desired length
+        lineRenderer.enabled = true;
+        lineRenderer.SetPosition(0, obj.transform.position);
+        lineRenderer.SetPosition(1, endpoint);
     }
 }
 
@@ -96,9 +122,16 @@ public class Canons : MonoBehaviour
 
 
 
+/*
 
+        Vector3 vec = obj.transform.rotation.eulerAngles;
+        Debug.Log(direction);
+       // Vector3 vec2 = (vec.x,vec.y,vec.z);
+        lineRenderer.SetPosition(0, obj.transform.position);
+        lineRenderer.SetPosition(1, direction);
+        //lineRenderer.SetPositions();
 
-
+*/
 
 
 // code for landscape view 
