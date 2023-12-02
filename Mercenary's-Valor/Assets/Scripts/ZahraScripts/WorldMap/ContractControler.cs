@@ -16,7 +16,7 @@ public class ContractControler : MonoBehaviour
     public TextMeshProUGUI imageText; // Reference to the Text UI element (For rest/Failur to receive contract)
 
     [SerializeField] private string whichscene;//For Scene
-    [SerializeField] private int Contractnumbers = 0;//To count contract
+    // [SerializeField] private int Contractnumbers = 0;//To count contract
 
 
 
@@ -28,18 +28,18 @@ public class ContractControler : MonoBehaviour
 
     public void acceptedContract()
     {
-        Contractnumbers++;
-        if (Contractnumbers >= 1)
+        GameManager.Instance.Contractnumbers++;
+        if (GameManager.Instance.Contractnumbers >= 1)
         {
             LoadScene();
         }
 
-        if (Contractnumbers >= 2)
+        if (GameManager.Instance.Contractnumbers >= 2)
         {
             LoadScene();
             ChangeBackgroundWorldMap();
         }
-        if (Contractnumbers >= 4)
+        if (GameManager.Instance.Contractnumbers >= 4)
         {
             Activation();
         }
@@ -71,4 +71,6 @@ public class ContractControler : MonoBehaviour
         // Disable the imageText after the delay
         imageText.gameObject.SetActive(false);
     }
+
+
 }
