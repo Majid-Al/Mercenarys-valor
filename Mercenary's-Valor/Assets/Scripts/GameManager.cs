@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
             if (instanse == null) instanse = GameObject.FindObjectOfType<GameManager>();
             return instanse;
         }
+
     }
 
 
@@ -38,6 +39,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI UIgoldText;
     [SerializeField] private TextMeshProUGUI UIfoodText;
 
+    public int Contractnumbers = 0;//To count contract
+
     void Start()
     {
         UIwoodText.text = UIwood.ToString();
@@ -53,7 +56,11 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void ResetContractNumber()
+    {
+        Contractnumbers = 0;
+    }
+
 
 }
-
 
