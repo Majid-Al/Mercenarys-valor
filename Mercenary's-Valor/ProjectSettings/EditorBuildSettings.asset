@@ -4,17 +4,5 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/WorldMap.unity
-    guid: 00bcac99560465249a1637ef7aeb6db8
-  - enabled: 1
-    path: Assets/Scenes/BattleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
-    path: Assets/Scenes/Mercenery's Camp.unity
-    guid: a6db470bb739768468b11f83da302e64
-  - enabled: 1
-    path: Assets/Scenes/Main Menu.unity
-    guid: 2197a6929f98f694e82a5692a0e1ee00
+  m_Scenes: []
   m_configObjects: {}
