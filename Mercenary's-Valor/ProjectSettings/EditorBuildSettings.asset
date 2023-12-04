@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Mercenery's Camp.unity
     guid: a6db470bb739768468b11f83da302e64
+  - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: 2197a6929f98f694e82a5692a0e1ee00
   m_configObjects: {}

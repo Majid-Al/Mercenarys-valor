@@ -41,13 +41,21 @@ public class GameManager : MonoBehaviour
 
     public int Contractnumbers = 0;//To count contract
 
+    private void Awake()
+    {
+        if (GameObject.Find("OriginalGameManager")) Destroy(gameObject);
+    }
     void Start()
     {
-       // UIwoodText.text = UIwood.ToString();
-       // UIstoneText.text = UIstone.ToString();
-       // UIgoldText.text = UIgold.ToString();
-       // UIfoodText.text = UIfood.ToString();
-
+        DontDestroyOnLoad(gameObject);
+        gameObject.name = "OriginalGameManager";
+        if (UIwoodText != null)
+        {
+            UIwoodText.text = UIwood.ToString();
+            UIstoneText.text = UIstone.ToString();
+            UIgoldText.text = UIgold.ToString();
+            UIfoodText.text = UIfood.ToString();
+        }
     }
 
     // Update is called once per frame
