@@ -43,20 +43,13 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-<<<<<<< HEAD
         if (UIwoodText != null){
         UIwoodText.text = UIwood.ToString();
         UIstoneText.text = UIstone.ToString();
         UIgoldText.text = UIgold.ToString();
         UIfoodText.text = UIfood.ToString();
         }
-=======
-       // UIwoodText.text = UIwood.ToString();
-       // UIstoneText.text = UIstone.ToString();
-       // UIgoldText.text = UIgold.ToString();
-       // UIfoodText.text = UIfood.ToString();
 
->>>>>>> e79de4325136e34c9a03a58af9e5871a66ce845d
     }
 
     // Update is called once per frame

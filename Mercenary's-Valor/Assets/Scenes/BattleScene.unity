@@ -16390,45 +16390,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5909337420703487786, guid: 6851878d1b2d62641874cfbdcc77659d, type: 3}
   m_PrefabInstance: {fileID: 4029236353974289557}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 871972185}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1094959851}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &871972187
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 871972185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a12366e429041b44a5e826c6f3a7e6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  p_waveCount: 5
-  p_enemyNumber: 6
-  stone: 10
-  gold: 10
-  food: 10
-  wood: 10
-  UIstone: 100
-  UIgold: 100
-  UIfood: 100
-  UIwood: 100
-  UIwoodText: {fileID: 1586597545}
-  UIstoneText: {fileID: 2056306762}
-  UIgoldText: {fileID: 1026950345}
-  UIfoodText: {fileID: 68763196}
-  Contractnumbers: 0
-=======
->>>>>>> e79de4325136e34c9a03a58af9e5871a66ce845d
 --- !u!1 &885827432
 GameObject:
   m_ObjectHideFlags: 0
