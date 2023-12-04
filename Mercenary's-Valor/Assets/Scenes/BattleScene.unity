@@ -16577,6 +16577,7 @@ MonoBehaviour:
   UIstoneText: {fileID: 2056306762}
   UIgoldText: {fileID: 1026950345}
   UIfoodText: {fileID: 68763196}
+  Contractnumbers: 0
 --- !u!1 &885827432
 GameObject:
   m_ObjectHideFlags: 0
