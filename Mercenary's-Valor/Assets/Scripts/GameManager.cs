@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, IDataPersistance
 {
 
     //Singleton instantiation
-    private static GameManager instanse;
+    private static GameManager instance;
     public static GameManager Instance
     {
         get
         {
-            if (instanse == null) instanse = GameObject.FindObjectOfType<GameManager>();
-            return instanse;
+            if (instance == null) instance = GameObject.FindObjectOfType<GameManager>();
+            return instance;
         }
 
     }
@@ -49,26 +49,30 @@ public class GameManager : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
         gameObject.name = "OriginalGameManager";
-        if (UIwoodText != null)
+        if(UIwoodText != null)
         {
             UIwoodText.text = UIwood.ToString();
             UIstoneText.text = UIstone.ToString();
             UIgoldText.text = UIgold.ToString();
             UIfoodText.text = UIfood.ToString();
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
 
     }
-
     public void ResetContractNumber()
     {
         Contractnumbers = 0;
     }
 
+
+    // Saving And loading functions (IDataPersistance): 
+    public void LoadData(GameData data)
+    {
+        this.gold = data.goldAmount;
+    }
+    public void SaveData(ref GameData data)
+    {
+        data.goldAmount = this.gold;
+    }
 
 }
 

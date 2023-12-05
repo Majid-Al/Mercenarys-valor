@@ -56,6 +56,7 @@ public class Enemy : MonoBehaviour
     void Gone()
     {
         health = maxHealth;
+        GameManager.Instance.gold++;
         // transform.position = new Vector3(-5, 0, 0);
         battleSceneManager.p_activeEnemies.Remove(gameObject);
         battleSceneManager.p_enemiesNumberOriginal--;
