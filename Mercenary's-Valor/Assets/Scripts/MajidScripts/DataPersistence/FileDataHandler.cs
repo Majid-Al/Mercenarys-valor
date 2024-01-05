@@ -45,13 +45,15 @@ public class FileDataHandler
                 { 
                     dataToLoad = EncryptDecrypt(dataToLoad);
                 }
+
+
                 //deserialize data from Json back to C# Object
                 loadedData = JsonUtility.FromJson<GameData>(dataToLoad);
 
             }
             catch (Exception e)
             {
-                Debug.LogError("Error acoured while trying to load data from file : " + fullPath + "\n" + e);
+                Debug.Log("Error acoured while trying to load data from file : " + fullPath + "\n" + e);
             }
         }
         return loadedData;
@@ -88,7 +90,7 @@ public class FileDataHandler
         }
         catch (Exception e) 
         { 
-            Debug.LogError("Error Acoured while trying to save data to file : " +  fullPath + "\n" + e);
+            Debug.Log("Error Acoured while trying to save data to file : " +  fullPath + "\n" + e);
         }
     }
 

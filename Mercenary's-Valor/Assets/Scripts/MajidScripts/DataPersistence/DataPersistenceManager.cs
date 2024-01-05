@@ -3,19 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.SceneManagement;
+using System.Xml.Serialization;
 
 public class DataPersistenceManager : MonoBehaviour
 {
-    [Header("Developing")]
-    [SerializeField] private bool initializeDataIfNull = false;
+    // the save location for Data is at :  
+    //                                           ===>    C:\Users\%userprofile%\AppData\LocalLow\<companyname>\<productname>
+    //   for majid is this path :                ===>    C:\Users\FaraCom\AppData\LocalLow\DefaultCompany\Mercenary's-Valor       
 
     [Header("File Storage Config")]
     [SerializeField] private string savingFileName;
     [SerializeField] private bool useEncryption;
 
-
     private GameData gameData;
     List<IDataPersistance> dataPersistanceObjects;
+
+
+
+
+
     private FileDataHandler dataHandler;
     public static DataPersistenceManager instance { get; private set; }
     public static DataPersistenceManager Instance
@@ -30,20 +36,13 @@ public class DataPersistenceManager : MonoBehaviour
 
             return instance;
         }
-
     }
 
     private void Awake()
     {
-        if (GameObject.Find("OriginalGameManager")) Destroy(gameObject);
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, savingFileName, useEncryption);
-        // if (Instance == null)
-        // {
-        //     Debug.LogError("Found more than one DataPersistenceManager singleton in the Scene");
-        // }
-        // Instance = this;
-    }
 
+    }
     public void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -63,17 +62,16 @@ public class DataPersistenceManager : MonoBehaviour
         LoadGame();
 
     }
-    public void OnSceneUnloaded(Scene sene)
+    public void OnSceneUnloaded(Scene scene)
     {
-
+        SaveGame();
     }
+
 
     private void Start()
     {
-        DontDestroyOnLoad(gameObject);
-        gameObject.name = "OriginalDataManager";
+        
     }
-
     public void NewGame()
     {
         this.gameData = new GameData();
@@ -84,56 +82,46 @@ public class DataPersistenceManager : MonoBehaviour
         // load any saved data from a file using a data handler
         this.gameData = dataHandler.Load();
 
-        if (this.gameData == null && initializeDataIfNull)
-        {
+
+        if (this.gameData == null) {
+            Debug.Log("No data was found Initializing to Defould Values");
             NewGame();
         }
-
-        // if no data is avalable go slect the correct button dumbAss
-        if(this.gameData == null)
+        foreach (IDataPersistance obj in dataPersistanceObjects)
         {
-            Debug.Log("No data has beed faund.a new Game Must be start");
-            return;
+            obj.LoadData(gameData);
         }
-
-        // push all the data to the necesary scripts 
-        foreach(IDataPersistance dataPersistenceObj in dataPersistanceObjects)
-        {
-            dataPersistenceObj.LoadData(gameData);
-        }
-        Debug.Log("Gold amout is in Load func is : " + gameData.goldAmount);
     }
-
     public void SaveGame()
     {
-        // if there is no data to save, log a warning 
         if (this.gameData == null)
         {
-            Debug.LogWarning("No data was found Please start a game");
-        }
+            Debug.Log("No data was found Please start a game");
+        } 
 
-        // update the data by other scripts
-        foreach (IDataPersistance dataPersistenceObj in dataPersistanceObjects)
+        foreach (IDataPersistance obj in dataPersistanceObjects)
         {
-            dataPersistenceObj.SaveData(ref gameData);
+            obj.SaveData(ref gameData);
         }
+        Debug.Log("Gold amout is in save func is : " + gameData.goldAmount);
 
         // save the data to a file using a data handler
-        dataHandler.Save(gameData); 
+        dataHandler.Save(gameData);
+
     }
 
-    public void OnApplicationQuit()
+    private void OnApplicationQuit()
     {
         SaveGame();
     }
-    private List<IDataPersistance> FindAllDataPersistanceObjects()
+
+   private List<IDataPersistance> FindAllDataPersistanceObjects()
     {
         IEnumerable<IDataPersistance> dataPersistanceObjects = FindObjectsOfType<MonoBehaviour>().OfType<IDataPersistance>();
         return new List<IDataPersistance>(dataPersistanceObjects);
     }
 
-    public bool HasGameData()
-    {
-        return gameData != null;
-    }
+
+
 }
+

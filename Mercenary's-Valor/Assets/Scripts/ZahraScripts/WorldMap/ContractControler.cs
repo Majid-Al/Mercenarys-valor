@@ -22,7 +22,7 @@ public class ContractControler : MonoBehaviour
 
 
     public void LoadScene()
-    {
+    { 
         SceneManager.LoadScene(whichscene);
     }
 

@@ -23,10 +23,10 @@ public class GameManager : MonoBehaviour, IDataPersistance
     public int p_enemyNumber;
 
     [Header("Text's value")]
-    public int stone = 10;
+    public int stone = 0;
     public int gold = 10;
-    public int food = 10;
-    public int wood = 10;
+    public int food = 0;
+    public int wood = 0;
 
     [Header("Text In UI")]
     public int UIstone = 100;

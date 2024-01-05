@@ -4,41 +4,41 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Runtime.InteropServices;
+using UnityEngine.Analytics;
 
-public class MainMenu : MonoBehaviour
+public class NewMainMenu : MonoBehaviour
 {
 
     //Majid script Start
     [Header("Menue Buttons")]
-    [SerializeField] private Button contenueButton;
+    [SerializeField] private Button continueButton;
     [SerializeField] private Button newGame;
-
 
 
     //Majid Script End
 
 
-    [SerializeField] private string whichscene;
+    [SerializeField] private string worldMap;
     // Start is called before the first frame update
     void Start()
     {
-        // majid again ;)
-        // check if there is a data saved
         // if there is no datasaved then disable the contenue Button
-        //if(DataPersistenceManager.Instance.HasGameData() == false)
-       // {
-        //    contenueButton.interactable = false;
-       // }
-        // Majid out
+       // if(DataPersistenceManager.Instance.HasGameData() == false)
+        // {
+        //    continueButton.interactable = false;
+        // }
     }
 
     public void OnNewGameClicked()
     {
-
+        DisableMenuButtons();
+        DataPersistenceManager.Instance.NewGame();
+        SceneManager.LoadScene(worldMap);
     }
-    public void OnContinue()
+    public void OnContinueClicked()
     {
-
+        DisableMenuButtons();
+        SceneManager.LoadScene(worldMap);
     }
     // Update is called once per frame
     void Update()
@@ -46,9 +46,10 @@ public class MainMenu : MonoBehaviour
 
     }
 
-    public void Load()
+    private void DisableMenuButtons()
     {
-        SceneManager.LoadScene(whichscene);
+        continueButton.interactable = false;
+        newGame.interactable = false;
     }
 
     public void QuitGame()
