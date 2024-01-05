@@ -11,6 +11,10 @@ public class DataPersistenceManager : MonoBehaviour
     //                                           ===>    C:\Users\%userprofile%\AppData\LocalLow\<companyname>\<productname>
     //   for majid is this path :                ===>    C:\Users\FaraCom\AppData\LocalLow\DefaultCompany\Mercenary's-Valor       
 
+
+    [Header("For Developing")]
+    [SerializeField] private bool initializeDataIfNull = false;
+
     [Header("File Storage Config")]
     [SerializeField] private string savingFileName;
     [SerializeField] private bool useEncryption;
@@ -82,10 +86,14 @@ public class DataPersistenceManager : MonoBehaviour
         // load any saved data from a file using a data handler
         this.gameData = dataHandler.Load();
 
+        if (this.gameData == null && initializeDataIfNull)
+        {
+            NewGame();
+        }
 
         if (this.gameData == null) {
-            Debug.Log("No data was found Initializing to Defould Values");
-            NewGame();
+            Debug.Log("No data was found. A new game must be Started");
+            return;
         }
         foreach (IDataPersistance obj in dataPersistanceObjects)
         {
@@ -97,6 +105,7 @@ public class DataPersistenceManager : MonoBehaviour
         if (this.gameData == null)
         {
             Debug.Log("No data was found Please start a game");
+            return;
         } 
 
         foreach (IDataPersistance obj in dataPersistanceObjects)
@@ -114,13 +123,16 @@ public class DataPersistenceManager : MonoBehaviour
     {
         SaveGame();
     }
-
+    public bool HasGameData()
+    {
+        return gameData != null;
+    }
    private List<IDataPersistance> FindAllDataPersistanceObjects()
     {
         IEnumerable<IDataPersistance> dataPersistanceObjects = FindObjectsOfType<MonoBehaviour>().OfType<IDataPersistance>();
         return new List<IDataPersistance>(dataPersistanceObjects);
     }
-
+    
 
 
 }

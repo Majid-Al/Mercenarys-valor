@@ -23,10 +23,10 @@ public class NewMainMenu : MonoBehaviour
     void Start()
     {
         // if there is no datasaved then disable the contenue Button
-       // if(DataPersistenceManager.Instance.HasGameData() == false)
-        // {
-        //    continueButton.interactable = false;
-        // }
+       if(DataPersistenceManager.Instance.HasGameData() == false)
+        {
+         continueButton.interactable = false;
+        }
     }
 
     public void OnNewGameClicked()
