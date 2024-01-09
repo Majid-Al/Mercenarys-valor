@@ -1327,6 +1327,10 @@ PrefabInstance:
       propertyPath: useEncryption
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2712266313406379587, guid: 32d8a1ddadf6b9c49b7669280389a13d, type: 3}
+      propertyPath: initializeDataIfNull
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5052741780713204537, guid: 32d8a1ddadf6b9c49b7669280389a13d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1514,8 +1518,8 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 64207789}
   - {fileID: 1994337029}
   - {fileID: 1837370320}
+  - {fileID: 64207789}
   - {fileID: 101390953}
   - {fileID: 1131452675}

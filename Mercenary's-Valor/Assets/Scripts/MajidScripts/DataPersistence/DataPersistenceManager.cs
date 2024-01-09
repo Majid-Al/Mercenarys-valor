@@ -112,7 +112,7 @@ public class DataPersistenceManager : MonoBehaviour
         {
             obj.SaveData(ref gameData);
         }
-        Debug.Log("Gold amout is in save func is : " + gameData.goldAmount);
+        Debug.Log("Gold amout in save func is : " + gameData.goldAmount);
 
         // save the data to a file using a data handler
         dataHandler.Save(gameData);

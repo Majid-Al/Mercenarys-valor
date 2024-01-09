@@ -75,7 +75,7 @@ public class CityPointer : MonoBehaviour
     }
 
 
-    void HandleChildA()
+    public void HandleChildA()
     {
         panel.SetActive(true);
 
@@ -98,7 +98,7 @@ public class CityPointer : MonoBehaviour
     }
 
 
-    void HandleChildB()
+    public void HandleChildB()
     {
         panel.SetActive(true);
 
@@ -120,7 +120,7 @@ public class CityPointer : MonoBehaviour
 
     }
 
-    void HandleChildC()
+    public void HandleChildC()
     {
         panel.SetActive(true);
 
@@ -143,7 +143,7 @@ public class CityPointer : MonoBehaviour
     }
 
 
-    void HandleChildD()
+    public void HandleChildD()
     {
         panel.SetActive(true);
 
@@ -204,9 +204,11 @@ public class CityPointer : MonoBehaviour
             ChildD.SetActive(true);
         }
 
-        
-
     }
+    // for development perpuses 
+    //delete after the game is finished
+
+
 
 
 }
